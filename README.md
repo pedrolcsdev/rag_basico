@@ -32,8 +32,8 @@ rag_basico/
 +-- ragBase.py
 +-- promptBase.py
 +-- pips.txt
-+-- a.txt
-+-- arquivo.sql
++-- dados-teste/
+    +-- base_conhecimento_ifood_genai-exemplo.csv
 ```
 
 Durante a execução, o `ragBase.py` também cria a pasta `documentos/` para os arquivos de entrada e `banco_vetorial/` para persistir os dados do ChromaDB.
@@ -43,7 +43,7 @@ Durante a execução, o `ragBase.py` também cria a pasta `documentos/` para os 
 - `ragBase.py`: fluxo principal de ingestão, busca semântica e chat.
 - `promptBase.py`: exemplo simples de chamada à Groq com prompts definidos no próprio arquivo.
 - `pips.txt`: lista de dependências do projeto.
-- `a.txt` e `arquivo.sql`: arquivos presentes na pasta; não são ingeridos automaticamente, pois a aplicação busca documentos dentro de `documentos/`.
+- `dados-teste/base_conhecimento_ifood_genai-exemplo.csv`: CSV de exemplo. Para indexá-lo, copie-o para `documentos/`, pasta que o programa lê.
 
 ## Requisitos
 
