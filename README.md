@@ -14,8 +14,6 @@ O fluxo principal está em `ragBase.py`:
 
 O exemplo de prompt está configurado para responder dúvidas sobre reembolsos. Ajuste as instruções em `gerar_resposta` para adaptar o assistente a outro assunto e use documentos apropriados.
 
-O arquivo `promptBase.py` é um exemplo independente de consulta à Groq, com uma instrução de resolução de problemas baseada em Tree of Thoughts. Ele não usa o banco vetorial.
-
 ## Tecnologias utilizadas
 
 - Python
@@ -30,10 +28,13 @@ O arquivo `promptBase.py` é um exemplo independente de consulta à Groq, com um
 rag_basico/
 +-- README.md
 +-- ragBase.py
-+-- promptBase.py
++-- .env.example
 +-- pips.txt
 +-- dados-teste/
-    +-- base_conhecimento_ifood_genai-exemplo.csv
+|   +-- base_conhecimento_ifood_genai-exemplo.csv
++-- imagens/
+    +-- base-exemplo.png
+    +-- resposta-ia.png
 ```
 
 Durante a execução, o `ragBase.py` também cria a pasta `documentos/` para os arquivos de entrada e `banco_vetorial/` para persistir os dados do ChromaDB.
@@ -41,7 +42,8 @@ Durante a execução, o `ragBase.py` também cria a pasta `documentos/` para os 
 ## Arquivos
 
 - `ragBase.py`: fluxo principal de ingestão, busca semântica e chat.
-- `promptBase.py`: exemplo simples de chamada à Groq com prompts definidos no próprio arquivo.
+- `.env.example`: modelo para configurar a chave da Groq.
+- `imagens/`: capturas da base de exemplo e da resposta do assistente.
 - `pips.txt`: lista de dependências do projeto.
 - `dados-teste/base_conhecimento_ifood_genai-exemplo.csv`: CSV de exemplo. Para indexá-lo, copie-o para `documentos/`, pasta que o programa lê.
 
@@ -65,7 +67,7 @@ cd rag_basico
 pip install -r pips.txt
 ```
 
-3. Crie um arquivo `.env` na pasta `rag_basico` com sua chave:
+3. Copie o arquivo `.env.example` para `.env` e substitua o valor pela sua chave da Groq:
 
 ```env
 GROQ_API_KEY=sua_chave_aqui
@@ -79,11 +81,15 @@ python ragBase.py
 
 Na primeira execução, escolha `1` para criar a pasta `documentos/`. Coloque nela arquivos `.txt`, `.pdf`, `.docx` ou `.csv` e escolha `1` novamente para indexá-los. Depois escolha `2` para conversar com o assistente; digite `sair` para encerrar o chat.
 
-Para executar o exemplo independente de prompt:
+## Exemplo de uso
 
-```bash
-python promptBase.py
-```
+A base de exemplo reúne perguntas e respostas sobre reembolsos e cancelamentos:
+
+![Tabela com a base de conhecimento de exemplo](imagens/base-exemplo.png)
+
+Após a ingestão da base, o assistente responde a uma pergunta no terminal:
+
+![Exemplo de resposta do assistente sobre reembolso](imagens/resposta-ia.png)
 
 ## Observações
 
